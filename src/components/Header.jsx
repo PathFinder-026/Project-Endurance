@@ -399,10 +399,11 @@ export default function Header({
             <Menu size={19} />
           </button>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flexShrink: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h1 className="apple-command-title">
-                Apex Kitchen Command
+                <span>Apex Kitchen</span>
+                <span>Command</span>
               </h1>
               {/* Dynamic Connection Indicator with Node Pulse */}
               <div
@@ -418,11 +419,11 @@ export default function Header({
               >
                 <span
                   style={{
-                    width: '7px',
-                    height: '7px',
+                    width: '6px',
+                    height: '6px',
                     borderRadius: '50%',
                     backgroundColor: isDbConnected ? '#10b981' : '#f59e0b',
-                    boxShadow: isDbConnected ? '0 0 10px rgba(16, 185, 129, 0.8)' : '0 0 6px rgba(245, 158, 11, 0.6)',
+                    boxShadow: isDbConnected ? '0 0 8px rgba(16, 185, 129, 0.8)' : '0 0 6px rgba(245, 158, 11, 0.6)',
                     animation: isDbConnected ? 'appleGlowPulse 2.2s infinite ease-in-out' : 'none'
                   }}
                 />
@@ -430,7 +431,7 @@ export default function Header({
                   {isDbConnected ? 'Supabase Live' : 'Live Dispatch'}
                 </span>
                 {isDbConnected && (
-                  <span className="hide-on-mobile" style={{ fontSize: '0.66rem', opacity: 0.75, fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.66rem', opacity: 0.75, fontWeight: 600 }}>
                     12ms
                   </span>
                 )}
@@ -451,8 +452,8 @@ export default function Header({
               <span className="apple-crumb-group">{currentRouteMeta.category}</span>
               <span className="apple-crumb-sep">/</span>
               <span className="apple-crumb-active">{currentRouteMeta.label}</span>
-              <span className="apple-crumb-bullet hide-on-tablet">•</span>
-              <span className="apple-crumb-store hide-on-tablet">{storeName}</span>
+              <span className="apple-crumb-bullet">•</span>
+              <span className="apple-crumb-store">{storeName}</span>
             </div>
           </div>
         </div>
@@ -470,7 +471,7 @@ export default function Header({
             <span className="apple-search-text">
               Search orders, dishes, customers...
             </span>
-            <kbd className="apple-kbd-shortcut hide-on-tablet">
+            <kbd className="apple-kbd-shortcut hide-on-mobile">
               {shortcutLabel}
             </kbd>
           </button>
@@ -482,44 +483,44 @@ export default function Header({
             title="Launch WhatsApp Customer Ordering Simulator"
           >
             <Smartphone size={15} />
-            <span className="hide-on-tablet">WhatsApp Simulator</span>
+            <span className="hide-on-mobile">WhatsApp Simulator</span>
             <Sparkles size={13} style={{ opacity: 0.85 }} />
           </button>
 
           {/* Pizza Builder Trigger */}
           <button
             onClick={onOpenPizzaBuilder}
-            className="image2-icon-btn hide-on-tablet"
+            className="image2-icon-btn"
             title="Interactive Pizza Builder"
           >
-            <Slice size={17} color="#059669" />
+            <Slice size={15} color="#059669" />
           </button>
 
           {/* AI Vision Scanner Trigger */}
           <button
             onClick={onOpenVisionScanner}
-            className="image2-icon-btn hide-on-tablet"
+            className="image2-icon-btn"
             title="AI Vision Menu & Invoice Scanner"
           >
-            <Camera size={17} color="#059669" />
+            <Camera size={15} color="#059669" />
           </button>
 
           {/* White-Label Theme Customizer */}
           <button
             onClick={onOpenWhiteLabel}
-            className="image2-icon-btn hide-on-tablet"
+            className="image2-icon-btn"
             title="White-Label Theme Customizer"
           >
-            <Palette size={17} color="var(--brand-accent)" />
+            <Palette size={15} color="var(--brand-accent)" />
           </button>
 
           {/* Unified Comms Mail Icon */}
           <button
             onClick={() => onNavigate && onNavigate('chats')}
-            className="image2-icon-btn hide-on-tablet"
+            className="image2-icon-btn"
             title="Unified Customer Comms Inbox"
           >
-            <Mail size={17} />
+            <Mail size={15} />
           </button>
 
           {/* Notification Bell with Dropdown Popover */}
@@ -530,15 +531,15 @@ export default function Header({
               title={pendingCount > 0 ? `${pendingCount} pending kitchen orders requiring action` : 'System & Kitchen Notifications'}
               style={{ position: 'relative' }}
             >
-              <Bell size={17} />
+              <Bell size={15} />
               {pendingCount > 0 && (
                 <span
                   style={{
                     position: 'absolute',
-                    top: '9px',
-                    right: '9px',
-                    width: '8px',
-                    height: '8px',
+                    top: '7px',
+                    right: '7px',
+                    width: '7px',
+                    height: '7px',
                     borderRadius: '50%',
                     backgroundColor: '#f59e0b',
                     boxShadow: '0 0 8px rgba(245, 158, 11, 0.9)',
@@ -668,7 +669,7 @@ export default function Header({
             className="image2-icon-btn"
             title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
           >
-            {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+            {theme === 'light' ? <Moon size={15} /> : <Sun size={15} />}
           </button>
 
           {/* Profile Avatar Tile with Popover Dropdown */}

@@ -2186,9 +2186,9 @@ button, input, select, textarea {
 }
 
 .image2-icon-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -2198,8 +2198,9 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 [data-theme='dark'] .image2-icon-btn {
@@ -2239,29 +2240,34 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 16px 12px;
-  margin-bottom: 16px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.78);
+  padding: 10px 20px;
+  margin: 0 auto 16px auto;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border-bottom: 1.5px solid rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), inset 0 1px 2px #ffffff;
   transition: all 0.25s var(--ease-apple);
 }
 
 [data-theme='dark'] .apple-command-header {
-  background: rgba(15, 23, 42, 0.82);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.06);
 }
 
 .apple-command-title {
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
   margin: 0;
   white-space: nowrap;
 }
@@ -2270,22 +2276,24 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 4px 12px;
+  height: 28px;
+  padding: 0 11px;
   border-radius: 9999px;
   border: 1.5px solid;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 2px 10px rgba(16, 185, 129, 0.10);
   transition: all 0.25s var(--ease-apple);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .apple-command-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
@@ -2293,19 +2301,20 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  height: 36px;
+  padding: 0 14px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   color: var(--text-muted);
   cursor: pointer;
-  min-width: 160px;
-  max-width: 300px;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-  transition: all 0.25s var(--ease-apple);
+  width: clamp(160px, 18vw, 260px);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: all 0.2s var(--ease-apple);
   font-family: inherit;
+  font-size: 0.78rem;
   text-align: left;
 }
 
@@ -2333,6 +2342,21 @@ button, input, select, textarea {
   .mobile-menu-trigger {
     display: flex;
   }
+  .apple-command-header {
+    padding: 8px 14px;
+    gap: 8px;
+    border-radius: 20px;
+  }
+  .apple-search-capsule {
+    width: 140px;
+  }
+  .apple-search-text {
+    display: none;
+  }
+  .apple-search-capsule::after {
+    content: "Search...";
+    font-size: 0.78rem;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -2348,22 +2372,31 @@ button, input, select, textarea {
   .apple-command-header {
     padding: 8px 12px;
     margin-bottom: 12px;
-    border-radius: 16px;
+    border-radius: 18px;
     gap: 8px;
   }
   .apple-command-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+  }
+  .apple-status-pill {
+    height: 24px;
+    padding: 0 8px;
+    font-size: 0.68rem;
   }
   .apple-search-capsule {
-    min-width: 120px;
-    padding: 6px 10px;
+    width: 36px;
+    min-width: 36px;
+    padding: 0;
+    justify-content: center;
   }
   .apple-search-text {
     display: none;
   }
   .apple-search-capsule::after {
-    content: "Search...";
-    font-size: 0.82rem;
+    display: none;
+  }
+  .apple-kbd-shortcut {
+    display: none !important;
   }
 }
 
@@ -2576,21 +2609,22 @@ button, input, select, textarea {
 }
 
 .apple-profile-avatar-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
   font-weight: 800;
-  font-size: 0.96rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   position: relative;
-  transition: all 0.25s var(--ease-apple);
+  transition: all 0.2s var(--ease-apple);
 }
 
 .apple-profile-avatar-btn:hover {
