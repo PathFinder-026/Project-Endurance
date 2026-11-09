@@ -101,6 +101,12 @@ export default function App() {
 
   const [isDbConnected, setIsDbConnected] = useState(false);
   const [dbToast, setDbToast] = useState('');
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Auto-close mobile sidebar when navigating
+  useEffect(() => {
+    setIsMobileSidebarOpen(false);
+  }, [currentRoute]);
 
   // Apply theme to document
   useEffect(() => {
@@ -343,6 +349,8 @@ export default function App() {
         onLogout={() => setIsLoggedIn(false)}
         onEditProfile={() => setIsEditProfileOpen(true)}
         userName={userName}
+        isMobileOpen={isMobileSidebarOpen}
+        onCloseMobile={() => setIsMobileSidebarOpen(false)}
       />
 
       <div className="main-wrapper">
@@ -359,6 +367,7 @@ export default function App() {
           onOpenWhiteLabel={() => setIsWhiteLabelOpen(true)}
           onOpenVisionScanner={() => setIsVisionScannerOpen(true)}
           onOpenPizzaBuilder={() => setIsPizzaBuilderOpen(true)}
+          onToggleMobileSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
           orders={orders}
           products={products}
           customers={customers}

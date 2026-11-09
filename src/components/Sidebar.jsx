@@ -32,7 +32,9 @@ export default function Sidebar({
   setCurrentRoute,
   onLogout,
   onEditProfile,
-  userName = 'Sakib'
+  userName = 'Sakib',
+  isMobileOpen = false,
+  onCloseMobile
 }) {
   const [isCollapsed, setIsCollapsed] = useState(() => {
     try {
@@ -203,11 +205,18 @@ export default function Sidebar({
   }, [currentRoute, isCollapsed, openSections]);
 
   return (
-    <aside
-      className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}
-      style={isCollapsed ? { width: '76px', minWidth: '76px', padding: '16px 8px' } : undefined}
-      aria-label="Main Navigation"
-    >
+    <>
+      {isMobileOpen && (
+        <div
+          className="sidebar-mobile-backdrop"
+          onClick={onCloseMobile}
+          aria-hidden="true"
+        />
+      )}
+      <aside
+        className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''}`}
+        aria-label="Main Navigation"
+      >
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
         {/* Sidebar Brand Header */}
         <div
@@ -506,5 +515,6 @@ export default function Sidebar({
         </div>
       )}
     </aside>
+    </>
   );
 }

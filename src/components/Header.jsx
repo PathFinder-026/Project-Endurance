@@ -5,7 +5,7 @@ import {
   ClipboardList, Repeat, Calendar, Headphones, MessageSquare, Megaphone,
   Bot, Users, TrendingUp, ShieldAlert, MessageSquareShare, UserCheck,
   Activity, ArrowRight, CornerDownLeft, Check, LogOut, Settings, User,
-  ChevronRight, AlertCircle, Clock, CheckCircle2, Zap
+  ChevronRight, AlertCircle, Clock, CheckCircle2, Zap, Menu
 } from 'lucide-react';
 
 export default function Header({
@@ -22,6 +22,7 @@ export default function Header({
   onOpenPizzaBuilder,
   onOpenAddProduct,
   onInspectOrder,
+  onToggleMobileSidebar,
   orders = [],
   products = [],
   customers = [],
@@ -386,9 +387,20 @@ export default function Header({
       {/* Sticky Apple Light Glass Top Header Command Bar */}
       <header className="apple-command-header stagger-1">
         {/* Left: Brand Identity, Contextual Breadcrumbs & Live Connection Status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: '1 1 auto' }}>
+          {/* Mobile hamburger menu toggle */}
+          <button
+            type="button"
+            className="mobile-menu-trigger"
+            onClick={onToggleMobileSidebar}
+            aria-label="Toggle Navigation Menu"
+            title="Open Navigation"
+          >
+            <Menu size={19} />
+          </button>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
               <h1 className="apple-command-title">
                 Apex Kitchen Command
               </h1>
@@ -415,10 +427,10 @@ export default function Header({
                   }}
                 />
                 <span style={{ fontWeight: 700, letterSpacing: '0.02em' }}>
-                  {isDbConnected ? 'Supabase Live' : 'Live Dispatch (Local)'}
+                  {isDbConnected ? 'Supabase Live' : 'Live Dispatch'}
                 </span>
                 {isDbConnected && (
-                  <span style={{ fontSize: '0.66rem', opacity: 0.75, fontWeight: 600 }}>
+                  <span className="hide-on-mobile" style={{ fontSize: '0.66rem', opacity: 0.75, fontWeight: 600 }}>
                     12ms
                   </span>
                 )}
@@ -426,7 +438,7 @@ export default function Header({
             </div>
 
             {/* Contextual Breadcrumb Navigation Bar */}
-            <div className="apple-breadcrumb-bar">
+            <div className="apple-breadcrumb-bar hide-on-mobile">
               <button
                 type="button"
                 onClick={() => onNavigate && onNavigate('live-ops')}
@@ -439,8 +451,8 @@ export default function Header({
               <span className="apple-crumb-group">{currentRouteMeta.category}</span>
               <span className="apple-crumb-sep">/</span>
               <span className="apple-crumb-active">{currentRouteMeta.label}</span>
-              <span className="apple-crumb-bullet">•</span>
-              <span className="apple-crumb-store">{storeName}</span>
+              <span className="apple-crumb-bullet hide-on-tablet">•</span>
+              <span className="apple-crumb-store hide-on-tablet">{storeName}</span>
             </div>
           </div>
         </div>
@@ -456,9 +468,9 @@ export default function Header({
           >
             <Search size={15} color="var(--brand-accent)" style={{ flexShrink: 0 }} />
             <span className="apple-search-text">
-              Search orders, dishes, customers, pages...
+              Search orders, dishes, customers...
             </span>
-            <kbd className="apple-kbd-shortcut">
+            <kbd className="apple-kbd-shortcut hide-on-tablet">
               {shortcutLabel}
             </kbd>
           </button>
@@ -470,14 +482,14 @@ export default function Header({
             title="Launch WhatsApp Customer Ordering Simulator"
           >
             <Smartphone size={15} />
-            <span className="hide-on-mobile">WhatsApp Simulator</span>
+            <span className="hide-on-tablet">WhatsApp Simulator</span>
             <Sparkles size={13} style={{ opacity: 0.85 }} />
           </button>
 
           {/* Pizza Builder Trigger */}
           <button
             onClick={onOpenPizzaBuilder}
-            className="image2-icon-btn"
+            className="image2-icon-btn hide-on-tablet"
             title="Interactive Pizza Builder"
           >
             <Slice size={17} color="#059669" />
@@ -486,7 +498,7 @@ export default function Header({
           {/* AI Vision Scanner Trigger */}
           <button
             onClick={onOpenVisionScanner}
-            className="image2-icon-btn"
+            className="image2-icon-btn hide-on-tablet"
             title="AI Vision Menu & Invoice Scanner"
           >
             <Camera size={17} color="#059669" />
@@ -495,7 +507,7 @@ export default function Header({
           {/* White-Label Theme Customizer */}
           <button
             onClick={onOpenWhiteLabel}
-            className="image2-icon-btn"
+            className="image2-icon-btn hide-on-tablet"
             title="White-Label Theme Customizer"
           >
             <Palette size={17} color="var(--brand-accent)" />
@@ -504,7 +516,7 @@ export default function Header({
           {/* Unified Comms Mail Icon */}
           <button
             onClick={() => onNavigate && onNavigate('chats')}
-            className="image2-icon-btn"
+            className="image2-icon-btn hide-on-tablet"
             title="Unified Customer Comms Inbox"
           >
             <Mail size={17} />

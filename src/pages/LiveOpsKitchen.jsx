@@ -170,7 +170,7 @@ export default function LiveOpsKitchen({
           {/* =========================================================================
               IMAGE 2 ROW 1: HERO BANNER + ACTIVE USERS WAVE + LATEST SALES
               ========================================================================= */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.55fr 1fr', gap: '20px', alignItems: 'stretch' }}>
+          <div className="live-ops-hero-grid" style={{ alignItems: 'stretch' }}>
             {/* HERO BANNER CARD: KITCHEN VELOCITY & ORDERS */}
             <div className="image2-hero-card glass-specular-shimmer stagger-1" style={{ position: 'relative', overflow: 'hidden' }}>
               {/* Holographic 3D Translucent Emerald Radar & Orbital Hexagon */}
@@ -822,8 +822,8 @@ export default function LiveOpsKitchen({
             </div>
           </div>
 
-          {/* ROW 1: 4 KPI Cards in 1 Line */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
+          {/* ROW 1: 4 KPI Cards in Responsive Grid */}
+          <div className="live-ops-kpi-grid">
             {/* Card 1: Orders Today */}
             <div
               className="kpi-card"
@@ -943,8 +943,8 @@ export default function LiveOpsKitchen({
             </div>
           </div>
 
-          {/* ROW 2: 3 Columns in 1 Line (Stock Health & Kitchen Score | Recent Orders | Operational status) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          {/* ROW 2: 3 Columns Responsive Grid (Stock Health & Kitchen Score | Recent Orders | Operational status) */}
+          <div className="live-ops-tri-grid">
             {/* Column 1: Stock health & Kitchen Score with Radial Gauge */}
             <div className="kpi-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
